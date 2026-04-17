@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="api-base" content="/api" />
+  <title>Admin - Funcionarios</title>
+
+  <!---------- ESTILOS --------->
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <link rel="stylesheet" href="./css/funcionarios.css" />
+</head>
+
+<body>
+  <!---------- LAYOUT --------->
+  <div class="layout">
+    <!---------- SIDEBAR --------->
+    <aside class="sidebar">
+      <div class="brand">Lenhardt Detailing</div>
+
+      <nav class="menu">
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./agendamentos.html">Agendamentos</a>
+        <a href="./veiculos.html">Historico de Veiculos</a>
+        <a href="./estoque.html">Estoque</a>
+        <a class="active" href="./funcionarios.html">Funcionarios</a>
+      </nav>
+
+      <button id="btnLogout" class="btn-logout">Sair</button>
+    </aside>
+
+    <!---------- CONTEUDO --------->
+    <main class="main">
+      <!---------- TOPO --------->
+      <header class="topbar">
+        <div>
+          <h1>Funcionarios</h1>
+          <p class="sub">Cadastre e gerencie a equipe de forma simples.</p>
+        </div>
+
+        <div class="filters">
+          <input id="buscaFuncionario" type="text" placeholder="Buscar por nome, cargo ou e-mail..." />
+          <select id="filtroStatus">
+            <option value="">Todos</option>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+          </select>
+          <button id="btnAtualizar" class="btn">Atualizar</button>
+          <button id="btnNovoUsuario" class="btn btn-ghost">+ Novo Usuario</button>
+          <button id="btnNovoFuncionario" class="btn">+ Novo Funcionario</button>
+        </div>
+      </header>
+
+      <section class="role-notice" id="roleNotice" hidden>
+        Perfil operador: voce pode manter a equipe, mas exclusoes e gestao de acessos ficam disponiveis apenas para admin.
+      </section>
+
+      <!---------- TABELA FUNCIONARIOS --------->
+      <section class="panel">
+        <div class="panel-title">Equipe</div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th>Observacoes</th>
+                <th style="width: 220px;">Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyFuncionarios"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!---------- TABELA USUARIOS --------->
+      <section class="panel" id="usuariosPanel">
+        <div class="panel-title">Usuarios do Sistema</div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>E-mail</th>
+                <th>Perfil</th>
+                <th>Status</th>
+                <th>Criado em</th>
+                <th style="width: 420px;">Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyUsuarios"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" id="solicitacoesPanel">
+        <div class="panel-title">Solicitacoes de Acesso</div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th>Observacoes</th>
+                <th>Solicitado em</th>
+                <th style="width: 260px;">Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="tbodySolicitacoesAcesso"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!---------- MODAL FUNCIONARIO --------->
+      <div class="modal-overlay" id="modalFuncionario">
+        <div class="modal">
+          <div class="modal-head">
+            <h3 id="modalTitulo">Novo Funcionario</h3>
+            <button class="modal-close" id="fecharModalFuncionario">&times;</button>
+          </div>
+
+          <div class="modal-body">
+            <input type="hidden" id="funcionarioId" />
+
+            <label class="label">Nome</label>
+            <input type="text" id="funcionarioNome" class="input" placeholder="Nome completo" />
+
+            <label class="label">Cargo</label>
+            <input type="text" id="funcionarioCargo" class="input" placeholder="Ex: Lavador tecnico" />
+
+            <label class="label">E-mail</label>
+            <input type="email" id="funcionarioEmail" class="input" placeholder="email@exemplo.com" />
+
+            <label class="label">Telefone</label>
+            <input type="text" id="funcionarioTelefone" class="input" placeholder="(61) 99999-9999" />
+
+            <label class="label">Status</label>
+            <select id="funcionarioStatus" class="input">
+              <option value="ativo">Ativo</option>
+              <option value="inativo">Inativo</option>
+            </select>
+
+            <label class="label">Observacoes</label>
+            <textarea id="funcionarioObservacoes" class="input textarea" placeholder="Informacoes uteis sobre o funcionario"></textarea>
+
+            <div class="modal-actions">
+              <button class="btn btn-ghost" id="cancelarFuncionario">Cancelar</button>
+              <button class="btn" id="salvarFuncionario">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!---------- MODAL USUARIO --------->
+      <div class="modal-overlay" id="modalUsuario">
+        <div class="modal">
+          <div class="modal-head">
+            <h3>Novo Usuario</h3>
+            <button class="modal-close" id="fecharModalUsuario">&times;</button>
+          </div>
+
+          <div class="modal-body">
+            <label class="label">E-mail de acesso</label>
+            <input type="email" id="usuarioEmail" class="input" placeholder="email@empresa.com" />
+
+            <label class="label">Senha</label>
+            <input type="password" id="usuarioSenha" class="input" placeholder="Minimo de 6 caracteres" />
+
+            <label class="label">Confirmar senha</label>
+            <input type="password" id="usuarioSenhaConfirmacao" class="input" placeholder="Repita a senha" />
+
+            <label class="label">Perfil de acesso</label>
+            <select id="usuarioRole" class="input">
+              <option value="operador">Operador</option>
+              <option value="admin">Admin</option>
+            </select>
+
+            <div class="modal-actions">
+              <button class="btn btn-ghost" id="cancelarUsuario">Cancelar</button>
+              <button class="btn" id="salvarUsuario">Criar Usuario</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!---------- MODAL SENHA --------->
+      <div class="modal-overlay" id="modalSenhaUsuario">
+        <div class="modal">
+          <div class="modal-head">
+            <h3>Alterar Senha</h3>
+            <button class="modal-close" id="fecharModalSenhaUsuario">&times;</button>
+          </div>
+
+          <div class="modal-body">
+            <input type="hidden" id="senhaUsuarioId" />
+
+            <label class="label">Nova senha</label>
+            <input type="password" id="novaSenhaUsuario" class="input" placeholder="Minimo de 6 caracteres" />
+
+            <label class="label">Confirmar nova senha</label>
+            <input type="password" id="confirmacaoSenhaUsuario" class="input" placeholder="Repita a nova senha" />
+
+            <div class="modal-actions">
+              <button class="btn btn-ghost" id="cancelarSenhaUsuario">Cancelar</button>
+              <button class="btn" id="salvarSenhaUsuario">Salvar Senha</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!---------- SCRIPT --------->
+  <script type="module" src="./js/funcionarios.js"></script>
+</body>
+</html>

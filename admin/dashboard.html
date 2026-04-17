@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="api-base" content="/api" />
+  <title>Admin | Dashboard</title>
+
+  <!---------- ESTILOS --------->
+  <link rel="stylesheet" href="./css/dashboard.css" />
+
+  <!---------- BIBLIOTECAS --------->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+  <!---------- LAYOUT --------->
+  <div class="layout">
+
+
+    <!---------- SIDEBAR --------->
+    <aside class="sidebar">
+      <div class="brand">Lenhardt Detailing</div>
+
+      <nav class="menu">
+        <a class="active" href="./dashboard.html">Dashboard</a>
+         <a href="./agendamentos.html">Agendamentos</a>
+        <a href="./veiculos.html">Histórico de Veículos</a>
+        <a href="./estoque.html">Estoque</a>
+        <a href="./funcionarios.html">Funcionários</a>
+      </nav>
+
+      <button id="btnLogout" class="btn-logout">Sair</button>
+    </aside>
+
+
+    <!---------- CONTEUDO --------->
+    <main class="main">
+      <!---------- TOPO --------->
+      <header class="topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="sub">Visão geral do faturamento</p>
+        </div>
+
+        <div class="filters">
+          <select id="filtroAno"></select>
+          <select id="filtroMes"></select>
+          <button id="btnAtualizar" class="btn">Atualizar</button>
+        </div>
+      </header>
+
+
+      <!---------- CARDS --------->
+      <section class="cards">
+
+
+        <div class="card">
+          <div class="card-title">Faturamento Mensal</div>
+          <div class="card-value" id="fatMensal">R$ 0,00</div>
+          <div class="card-sub" id="mensalInfo">-</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Faturamento Semestral</div>
+          <div class="card-value" id="fatSemestral">R$ 0,00</div>
+          <div class="card-sub" id="semestreInfo">-</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Faturamento Anual</div>
+          <div class="card-value" id="fatAnual">R$ 0,00</div>
+          <div class="card-sub" id="anualInfo">-</div>
+        </div>
+
+
+        <div class="card card-previsto">
+          <div class="card-title">Previsto Mensal</div>
+          <div class="card-value" id="prevMensal">R$ 0,00</div>
+          <div class="card-sub">Agendamentos em aberto</div>
+        </div>
+
+        <div class="card card-previsto">
+          <div class="card-title">Previsto Semestral</div>
+          <div class="card-value" id="prevSemestral">R$ 0,00</div>
+          <div class="card-sub">Agendamentos em aberto</div>
+        </div>
+
+        <div class="card card-previsto">
+          <div class="card-title">Previsto Anual</div>
+          <div class="card-value" id="prevAnual">R$ 0,00</div>
+          <div class="card-sub">Agendamentos em aberto</div>
+        </div>
+
+      </section>
+
+
+      <!---------- GRAFICOS --------->
+      <section class="grid">
+        <div class="panel">
+          <div class="panel-title">Faturamento por mês</div>
+          <!-- ✅ ApexCharts usa DIV, não canvas -->
+          <div id="chartBar" style="height: 280px;"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">Serviços mais vendidos</div>
+
+          <div id="chartDonut" style="height: 280px;"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!---------- SCRIPT --------->
+  <script type="module" src="./js/dashboard.js"></script>
+</body>
+</html>

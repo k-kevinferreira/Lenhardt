@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="api-base" content="/api">
+    <title>Admin | Login</title>
+    <!---------- ESTILOS --------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+    <!---------- LOGIN --------->
+    <main class="login-shell">
+        <!---------- APRESENTACAO --------->
+        <section class="login-panel login-panel-brand">
+            <div class="brand-pill">Lenhardt Detailing</div>
+            <h1>Painel administrativo</h1>
+            <p>
+                Acesse o sistema para controlar a operacao do estudio com uma interface
+                mais organizada, direta e consistente.
+            </p>
+
+            <ul class="login-highlights">
+                <li>Agendamentos, estoque, veiculos e equipe em um so painel.</li>
+                <li>Fluxo simples para operacao enxuta e rapida.</li>
+                <li>Visual alinhado com o restante do sistema.</li>
+            </ul>
+        </section>
+
+        <!---------- FORMULARIO --------->
+        <section class="login-panel login-panel-form">
+            <div class="login-head">
+                <h2>Entrar</h2>
+                <p>Use suas credenciais para continuar.</p>
+            </div>
+
+            <form id="form-login" novalidate>
+                <label class="field-label" for="email">E-mail</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input id="email" type="email" placeholder="seuemail@empresa.com" required>
+                </div>
+
+                <label class="field-label" for="senha">Senha</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input id="senha" type="password" placeholder="Sua senha" required>
+                    <button type="button" class="toggle-password" id="toggleSenha" aria-label="Mostrar senha">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+
+                <p class="login-error" id="loginError" role="alert" aria-live="polite"></p>
+
+                <button type="submit" id="loginSubmit">Entrar no painel</button>
+                <button type="button" id="requestAccessBtn" class="login-secondary-btn">Cadastrar novo usuario</button>
+            </form>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="requestAccessModal">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3>Solicitar acesso</h3>
+                <button type="button" class="modal-close" id="closeRequestAccessModal" aria-label="Fechar">&times;</button>
+            </div>
+
+            <form id="requestAccessForm" class="modal-body" novalidate>
+                <label class="field-label" for="requestNome">Nome</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input id="requestNome" type="text" placeholder="Seu nome completo" required>
+                </div>
+
+                <label class="field-label" for="requestEmail">E-mail</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input id="requestEmail" type="email" placeholder="seuemail@empresa.com" required>
+                </div>
+
+                <label class="field-label" for="requestTelefone">Telefone</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <input id="requestTelefone" type="text" placeholder="(61) 99999-9999">
+                </div>
+
+                <label class="field-label" for="requestSenha">Senha desejada</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input id="requestSenha" type="password" placeholder="Minimo de 6 caracteres" required>
+                </div>
+
+                <label class="field-label" for="requestSenhaConfirmacao">Confirmar senha</label>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input id="requestSenhaConfirmacao" type="password" placeholder="Repita a senha" required>
+                </div>
+
+                <label class="field-label" for="requestObservacoes">Observacoes</label>
+                <div class="input-group textarea-group">
+                    <textarea id="requestObservacoes" placeholder="Se quiser, deixe uma observacao para o administrador"></textarea>
+                </div>
+
+                <p class="login-error" id="requestAccessError" role="alert" aria-live="polite"></p>
+
+                <div class="modal-actions">
+                    <button type="button" class="login-secondary-btn" id="cancelRequestAccess">Cancelar</button>
+                    <button type="submit" id="requestAccessSubmit">Enviar solicitacao</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!---------- SCRIPT --------->
+    <script type="module" src="./js/login.js"></script>
+</body>
+
+</html>

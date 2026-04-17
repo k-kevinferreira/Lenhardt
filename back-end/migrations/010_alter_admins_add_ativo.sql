@@ -1,0 +1,8 @@
+ALTER TABLE admins
+  ADD COLUMN IF NOT EXISTS ativo SMALLINT NOT NULL DEFAULT 1;
+
+ALTER TABLE admins
+  DROP CONSTRAINT IF EXISTS ck_admins_ativo;
+
+ALTER TABLE admins
+  ADD CONSTRAINT ck_admins_ativo CHECK (ativo IN (0, 1));

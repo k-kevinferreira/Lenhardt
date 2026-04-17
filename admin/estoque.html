@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="api-base" content="/api" />
+  <title>Admin • Estoque</title>
+
+  <!---------- ESTILOS --------->
+  <link rel="stylesheet" href="./css/dashboard.css" />
+  <link rel="stylesheet" href="./css/estoque.css" />
+</head>
+
+<body>
+  <!---------- LAYOUT --------->
+  <div class="layout">
+
+
+    <!---------- SIDEBAR --------->
+    <aside class="sidebar">
+      <div class="brand">Lenhardt Detailing</div>
+
+      <nav class="menu">
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./agendamentos.html">Agendamentos</a>
+        <a href="./veiculos.html">Histórico de Veículos</a>
+        <a class="active" href="./estoque.html">Estoque</a>
+        <a href="./funcionarios.html">Funcionários</a>
+      </nav>
+
+      <button id="btnLogout" class="btn-logout">Sair</button>
+    </aside>
+
+
+    <!---------- CONTEUDO --------->
+    <main class="main">
+      <!---------- TOPO --------->
+      <header class="topbar">
+        <div>
+          <h1>Estoque</h1>
+          <p class="sub">Gerencie produtos, quantidades e validade.</p>
+        </div>
+
+        <div class="filters">
+          <input id="buscaProduto" type="text" placeholder="Buscar produto..." />
+          <select id="filtroStatus">
+            <option value="">Todos</option>
+            <option value="ok">OK</option>
+            <option value="baixo">Baixo</option>
+            <option value="sem_estoque">Sem estoque</option>
+          </select>
+
+          <button id="btnAtualizar" class="btn">Atualizar</button>
+          <button id="btnNovoProduto" class="btn">+ Novo Produto</button>
+        </div>
+      </header>
+
+      <section class="role-notice" id="roleNotice" hidden>
+        Perfil operador: cadastro e edicao seguem liberados, mas exclusoes de produtos ficam disponiveis apenas para admin.
+      </section>
+
+      <!---------- TABELA --------->
+      <section class="panel">
+        <div class="panel-title">Lista de Produtos</div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Validade</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th style="width: 220px;">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyProdutos"></tbody>
+          </table>
+        </div>
+      </section>
+
+
+      <!---------- MODAL PRODUTO --------->
+      <div class="modal-overlay" id="modalProduto">
+        <div class="modal">
+          <div class="modal-head">
+            <h3 id="modalTitulo">Novo Produto</h3>
+            <button class="modal-close" id="fecharModalProduto">×</button>
+          </div>
+
+          <div class="modal-body">
+            <input type="hidden" id="produtoId" />
+
+            <label class="label">Produto</label>
+            <input type="text" id="produtoNome" class="input" placeholder="Ex: Shampoo Automotivo" />
+
+            <label class="label">Quantidade</label>
+            <input type="number" id="produtoQtd" class="input" placeholder="0" step="0.01" />
+
+            <label class="label">Data da compra</label>
+            <input type="date" id="produtoDataCompra" class="input" />
+
+            <label class="label">Valor gasto (R$)</label>
+            <input type="number" id="produtoValorGasto" class="input" placeholder="0.00" step="0.01" />
+
+
+            <label class="label">Status (automático)</label>
+            <select id="produtoStatus" disabled>
+              <option value="ok">ok</option>
+              <option value="baixo">baixo</option>
+              <option value="sem_estoque">sem estoque</option>
+            </select>
+
+
+            <div class="modal-actions">
+              <button class="btn btn-ghost" id="cancelarModalProduto">Cancelar</button>
+              <button class="btn" id="salvarProduto">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!---------- SCRIPT --------->
+  <script type="module" src="./js/estoque.js"></script>
+</body>
+
+</html>

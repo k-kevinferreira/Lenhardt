@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="api-base" content="/api">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./src/css/style.css">
+    
+
+    <title>Lenhardt</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="./src/img/icon/lenhardt-removebg-preview.png" alt="Logo" id="logo">
+
+        <nav class="navbar">
+            <div class="menu-icon" id="menu-icon">
+                <i class="fa-solid fa-bars" style="color: #9cff00;"></i>
+            </div>
+
+            <ul class="nav-list" id="nav-list">
+    <li><a href="#">Home</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
+    <li><a href="#contato">Contato</a></li>
+
+    <li class="li-admin">
+        <a href="admin/login.html" class="btn-admin">
+            Admin
+        </a>
+    </li>
+</ul>
+
+        </nav>
+    </header>
+
+    
+    <main>
+
+        <!---------- HERO --------->
+        <section class="hero" id="home">
+            <div class="banner">
+                <h1>Excelência em cada detalhe</h1>
+
+                <div class="botoes-banner">
+                    <button type="button" class="agendar-servicos">
+                        Agendar Serviços
+                    </button>
+                    <button type="button" class="whatsapp">
+                        Falar no WhatsApp
+                    </button>
+                </div>
+            </div>
+
+            <!----------------- SERVIÇOS -------------->
+            <div class="servicos" id="servicos">
+                <h2>Nossos Serviços</h2>
+
+                <div class="cards-servicos">
+
+                    <div class="card-servico">
+                        <img src="./src/img/icon/polimento-de-carro.png" alt="Polimento" class="icon-servico">
+                        <h3>Polimento Técnico</h3>
+                        <p>Restauração do brilho e remoção de imperfeições da pintura.</p>
+                    </div>
+
+                    <div class="card-servico">
+                        <img src="./src/img/icon/escudo-seguro.png" alt="Vitrificação" class="icon-servico">
+                        <h3>Vitrificação Automotiva</h3>
+                        <p>Proteção avançada da pintura com brilho intenso.</p>
+                    </div>
+
+                    <div class="card-servico">
+                        <img src="./src/img/icon/spray-de-limpeza.png" alt="Higienização" class="icon-servico">
+                        <h3>Higienização Interna</h3>
+                        <p>Limpeza profunda do interior do veículo.</p>
+                    </div>
+
+                    <div class="card-servico">
+                        <img src="./src/img/icon/ondas-do-mar.png" alt="Lavagem" class="icon-servico">
+                        <h3>Lavagem Detalhada</h3>
+                        <p>Lavagem técnica com máximo cuidado.</p>
+                    </div>
+
+                    <div class="card-servico">
+                        <img src="./src/img/icon/ressalto (1).png" alt="Proteção de Pintura" class="icon-servico">
+                        <h3>Proteção de Pintura</h3>
+                        <p>Camada protetora contra desgaste e raios UV.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!----------- PORTFÓLIO ---------------->
+        <section class="trabalhos" id="portfolio">
+            <h2>Trabalhos Realizados</h2>
+
+            <div class="imagens-portfolio">
+                <img src="./src/img/img/audi.jpg" alt="Trabalho 1">
+                <img src="./src/img/img/banco 2.PNG" alt="Trabalho 2">
+                <img src="./src/img/img/farol.jpg" alt="Trabalho 3">
+                <img src="./src/img/img/motor.jpg" alt="Trabalho 4">
+                <img src="./src/img/img/vitrificação.jpg" alt="Trabalho 5">
+            </div>
+        </section>
+
+        <!--------- CONTATO ---------->
+        <section class="contato" id="contato">
+            <h2>Contato</h2>
+
+            <div class="contato-container">
+                <div class="contato-wrapper">
+
+                    <!------- FORM CONTATO ------------>
+                    <form class="modal-form" id="form-contato">
+                        <input type="text" id="contato-nome" placeholder="Nome" required>
+
+                        <div class="input-group">
+                            <input type="email" id="contato-email" placeholder="E-mail" required>
+                            <input type="tel" id="contato-telefone" placeholder="Telefone" required>
+                        </div>
+
+                        <textarea id="contato-mensagem" placeholder="Mensagem" required></textarea>
+
+                        <button type="submit" class="btn-enviar">
+                            ENVIAR MENSAGEM
+                        </button>
+                    </form>
+
+                </div>
+
+                <div class="contato-info">
+                    <div class="info-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+                        <span>(61) 99354-9777</span>
+                    </div>
+
+                    <div class="info-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                        <span>@Lenhardt Detailing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!----------- FOOTER ------------>
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <img src="./src/img/icon/lenhardt-removebg-preview.png" alt="Lenhardt Logo">
+                <p>Estética automotiva de alto nível.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-address">
+                <h3>Localização</h3>
+                <p>Gama - DF</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Lenhardt Detailing</p>
+        </div>
+    </footer>
+
+    <!----------- MODAL AGENDAR SERVIÇo  ------------>
+
+    <div class="modal-overlay" id="modal-agendar">
+        <div class="modal">
+            <button class="modal-close" id="fechar-modal">&times;</button>
+
+            <h2>Agendar Serviço</h2>
+
+            <form class="modal-form" id="form-agendar">
+                <input type="text" id="agendar-nome" placeholder="Nome completo" required>
+                <input type="email" id="agendar-email" placeholder="E-mail (opcional)">
+                <input type="tel" id="agendar-telefone" placeholder="Telefone / WhatsApp" required>
+                <input type="text" id="agendar-veiculo" placeholder="Veículo (ex: Civic 2018 prata)" required>
+
+                <select id="agendar-servico" required>
+                    <option value="">Selecione o serviço</option>
+                    <option value="Polimento Técnico">Polimento Técnico</option>
+                    <option value="Vitrificação Automotiva">Vitrificação Automotiva</option>
+                    <option value="Higienização Interna">Higienização Interna</option>
+                    <option value="Lavagem Detalhada">Lavagem Detalhada</option>
+                    <option value="Proteção de Pintura">Proteção de Pintura</option>
+                </select>
+
+                <input type="date" id="agendar-data" required>
+                <textarea id="agendar-observacoes" placeholder="Observações (opcional)"></textarea>
+
+                <button type="submit" class="btn-confirmar">
+                    Confirmar Agendamento
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./src/js/script.js"></script>
+
+</body>
+</html>
