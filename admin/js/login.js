@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "./dashboard.html";
     } catch (err) {
       console.error("ERRO NO LOGIN:", err);
-      setError(err.message || "Erro no login");
+      setError(err.message || "Erro no login.");
     } finally {
       if (btn) {
         btn.disabled = false;
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (senha !== confirmacao) {
-      setRequestAccessError("As senhas nao conferem.");
+      setRequestAccessError("As senhas não conferem.");
       return;
     }
 
@@ -124,15 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
         senha,
         observacoes,
       });
-      alert("Solicitacao enviada com sucesso. Aguarde a liberacao de um administrador.");
+      alert("Solicitação enviada com sucesso. Aguarde a liberação de um administrador.");
       closeRequestModal();
     } catch (err) {
-      console.error("ERRO NA SOLICITACAO DE ACESSO:", err);
-      setRequestAccessError(err.message || "Nao foi possivel enviar a solicitacao.");
+      console.error("ERRO NA SOLICITAÇÃO DE ACESSO:", err);
+      setRequestAccessError(err.message || "Não foi possível enviar a solicitação.");
     } finally {
       if (requestAccessSubmit) {
         requestAccessSubmit.disabled = false;
-        requestAccessSubmit.textContent = "Enviar solicitacao";
+        requestAccessSubmit.textContent = "Enviar solicitação";
       }
     }
   });

@@ -1,4 +1,3 @@
-// admin/js/produtos.js
 import { apiFetch, apiLogout, isCurrentUserAdmin, requireAuth } from "./apiClient.js";
 import { escapeHtml, textOrDash } from "./htmlSafe.js";
 
@@ -193,14 +192,12 @@ async function salvarProduto() {
     if (!Number.isFinite(quantidade) || quantidade < 0) return alert("Quantidade inválida.");
     if (!Number.isFinite(valor_gasto) || valor_gasto < 0) return alert("Valor gasto inválido.");
 
-    // ✅ IMPORTANTE: seu backend calcula status sozinho (baseado na quantidade).
-    // Então não enviamos "status" no payload.
     const payload = { produto, quantidade, data_compra, valor_gasto };
 
     if (editId) {
       await apiFetch(`/produtos/${editId}`, { method: "PUT", body: payload });
     } else {
-      await apiFetch(`/produtos`, { method: "POST", body: payload });
+      await apiFetch("/produtos", { method: "POST", body: payload });
     }
 
     const buscaEl = document.getElementById("buscaProduto");
@@ -224,7 +221,7 @@ document.addEventListener("click", async (e) => {
 
   if (btnExcluir) {
     if (!canDeleteProduto) {
-      alert("Somente admin pode excluir produtos.");
+      alert("Somente admins podem excluir produtos.");
       return;
     }
     try {

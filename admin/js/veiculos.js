@@ -1,4 +1,3 @@
-// admin/js/veiculos.js
 import { apiFetch, apiLogout, isCurrentUserAdmin, requireAuth } from "./apiClient.js";
 import { escapeHtml, textOrDash } from "./htmlSafe.js";
 
@@ -201,7 +200,7 @@ document.addEventListener("click", async (e) => {
 
   if (btnExcluir) {
     if (!canDeleteVeiculo) {
-      alert("Somente admin pode excluir veiculos.");
+      alert("Somente admins podem excluir veículos.");
       return;
     }
     try {
@@ -214,7 +213,6 @@ document.addEventListener("click", async (e) => {
 
   if (btnEditar) {
     abrirEdicaoVeiculo(btnEditar.dataset.id);
-    return;
   }
 });
 

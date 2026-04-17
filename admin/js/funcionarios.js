@@ -48,7 +48,7 @@ function renderTabela(lista) {
   if (!lista.length) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="8" style="opacity:.7; padding:16px;">Nenhum funcionario encontrado.</td>
+        <td colspan="8" style="opacity:.7; padding:16px;">Nenhum funcionário encontrado.</td>
       </tr>
     `;
     return;
@@ -84,7 +84,7 @@ function renderTabelaUsuarios(lista) {
   if (!lista.length) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="6" style="opacity:.7; padding:16px;">Nenhum usuario encontrado.</td>
+        <td colspan="6" style="opacity:.7; padding:16px;">Nenhum usuário encontrado.</td>
       </tr>
     `;
     return;
@@ -128,7 +128,7 @@ function renderTabelaSolicitacoes(lista) {
   if (!lista.length) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="8" style="opacity:.7; padding:16px;">Nenhuma solicitacao de acesso pendente.</td>
+        <td colspan="8" style="opacity:.7; padding:16px;">Nenhuma solicitação de acesso pendente.</td>
       </tr>
     `;
     return;
@@ -249,7 +249,7 @@ function abrirNovo() {
   qs("funcionarioTelefone").value = "";
   qs("funcionarioStatus").value = "ativo";
   qs("funcionarioObservacoes").value = "";
-  abrirModal("Novo Funcionario");
+  abrirModal("Novo Funcionário");
 }
 
 function abrirEdicao(id) {
@@ -264,7 +264,7 @@ function abrirEdicao(id) {
   qs("funcionarioTelefone").value = funcionario.telefone || "";
   qs("funcionarioStatus").value = funcionario.status || "ativo";
   qs("funcionarioObservacoes").value = funcionario.observacoes || "";
-  abrirModal(`Editar Funcionario #${funcionario.id}`);
+  abrirModal(`Editar Funcionário #${funcionario.id}`);
 }
 
 async function salvarFuncionario() {
@@ -278,12 +278,12 @@ async function salvarFuncionario() {
   };
 
   if (!payload.nome) {
-    alert("Informe o nome do funcionario.");
+    alert("Informe o nome do funcionário.");
     return;
   }
 
   if (!payload.cargo) {
-    alert("Informe o cargo do funcionario.");
+    alert("Informe o cargo do funcionário.");
     return;
   }
 
@@ -298,7 +298,7 @@ async function salvarFuncionario() {
 }
 
 async function excluirFuncionario(id) {
-  if (!confirm("Deseja excluir este funcionario?")) return;
+  if (!confirm("Deseja excluir este funcionário?")) return;
   await apiFetch(`/funcionarios/${id}`, { method: "DELETE" });
   await carregarFuncionarios();
 }
@@ -310,12 +310,12 @@ async function salvarUsuario() {
   const role = String(qs("usuarioRole")?.value || "operador").trim().toLowerCase();
 
   if (!email) {
-    alert("Informe o e-mail do usuario.");
+    alert("Informe o e-mail do usuário.");
     return;
   }
 
   if (!senha) {
-    alert("Informe a senha do usuario.");
+    alert("Informe a senha do usuário.");
     return;
   }
 
@@ -325,7 +325,7 @@ async function salvarUsuario() {
   }
 
   if (senha !== confirmacao) {
-    alert("As senhas nao conferem.");
+    alert("As senhas não conferem.");
     return;
   }
 
@@ -336,7 +336,7 @@ async function salvarUsuario() {
 
   fecharModalUsuario();
   await carregarUsuarios();
-  alert("Usuario criado com sucesso.");
+  alert("Usuário criado com sucesso.");
 }
 
 async function salvarNovaSenhaUsuario() {
@@ -345,7 +345,7 @@ async function salvarNovaSenhaUsuario() {
   const confirmacao = String(qs("confirmacaoSenhaUsuario")?.value || "");
 
   if (!id) {
-    alert("Usuario invalido.");
+    alert("Usuário inválido.");
     return;
   }
 
@@ -355,7 +355,7 @@ async function salvarNovaSenhaUsuario() {
   }
 
   if (senha !== confirmacao) {
-    alert("As senhas nao conferem.");
+    alert("As senhas não conferem.");
     return;
   }
 
@@ -386,19 +386,19 @@ async function alternarRoleUsuario(id, roleAtual) {
 }
 
 async function excluirUsuario(id) {
-  if (!confirm("Deseja excluir este usuario do sistema?")) return;
+  if (!confirm("Deseja excluir este usuário do sistema?")) return;
   await apiFetch(`/auth/admins/${id}`, { method: "DELETE" });
   await carregarUsuarios();
 }
 
 async function aprovarSolicitacaoAcesso(id) {
-  if (!confirm("Deseja liberar o acesso deste usuario?")) return;
+  if (!confirm("Deseja liberar o acesso deste usuário?")) return;
   await apiFetch(`/auth/access-requests/${id}/approve`, { method: "PATCH" });
   await Promise.all([carregarUsuarios(), carregarSolicitacoesAcesso()]);
 }
 
 async function recusarSolicitacaoAcesso(id) {
-  if (!confirm("Deseja recusar esta solicitacao de acesso?")) return;
+  if (!confirm("Deseja recusar esta solicitação de acesso?")) return;
   await apiFetch(`/auth/access-requests/${id}/reject`, { method: "PATCH" });
   await carregarSolicitacoesAcesso();
 }
@@ -420,13 +420,13 @@ document.addEventListener("click", async (e) => {
 
   if (btnExcluir) {
     if (!canDeleteFuncionario) {
-      alert("Somente admin pode excluir funcionarios.");
+      alert("Somente admins podem excluir funcionários.");
       return;
     }
     try {
       await excluirFuncionario(btnExcluir.dataset.id);
     } catch (err) {
-      alert(err.message || "Erro ao excluir funcionario.");
+      alert(err.message || "Erro ao excluir funcionário.");
     }
     return;
   }
@@ -440,7 +440,7 @@ document.addEventListener("click", async (e) => {
     try {
       await alternarRoleUsuario(btnRoleUsuario.dataset.id, btnRoleUsuario.dataset.role);
     } catch (err) {
-      alert(err.message || "Erro ao alterar perfil de acesso.");
+      alert(err.message || "Erro ao alterar o perfil de acesso.");
     }
     return;
   }
@@ -452,7 +452,7 @@ document.addEventListener("click", async (e) => {
         btnStatusUsuario.dataset.ativo === "1"
       );
     } catch (err) {
-      alert(err.message || "Erro ao alterar status do usuario.");
+      alert(err.message || "Erro ao alterar o status do usuário.");
     }
     return;
   }
@@ -461,7 +461,7 @@ document.addEventListener("click", async (e) => {
     try {
       await excluirUsuario(btnExcluirUsuario.dataset.id);
     } catch (err) {
-      alert(err.message || "Erro ao excluir usuario.");
+      alert(err.message || "Erro ao excluir usuário.");
     }
     return;
   }
@@ -470,7 +470,7 @@ document.addEventListener("click", async (e) => {
     try {
       await aprovarSolicitacaoAcesso(btnAprovarSolicitacao.dataset.id);
     } catch (err) {
-      alert(err.message || "Erro ao aprovar solicitacao de acesso.");
+      alert(err.message || "Erro ao aprovar solicitação de acesso.");
     }
     return;
   }
@@ -479,7 +479,7 @@ document.addEventListener("click", async (e) => {
     try {
       await recusarSolicitacaoAcesso(btnRecusarSolicitacao.dataset.id);
     } catch (err) {
-      alert(err.message || "Erro ao recusar solicitacao de acesso.");
+      alert(err.message || "Erro ao recusar solicitação de acesso.");
     }
   }
 });

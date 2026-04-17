@@ -60,8 +60,8 @@ async function carregarServicosTop(ano, mes) {
 let chartBar = null;
 let chartDonut = null;
 
-// -------- GRAFICOS --------
-function renderBar({ ano, data } = {}) {
+// -------- GRÁFICOS --------
+function renderBar({ data } = {}) {
   const el = document.getElementById("chartBar");
   if (!el) return;
 
@@ -124,7 +124,6 @@ async function atualizarDashboard() {
   const ano = Number(anoEl?.value || new Date().getFullYear());
   const mes = Number(mesEl?.value || new Date().getMonth() + 1);
 
-  // resumo
   const resumo = await carregarResumo(ano, mes);
 
   setText("fatMensal", brl(resumo?.faturamento_mensal));
@@ -142,7 +141,6 @@ async function atualizarDashboard() {
   setText("prevSemestral", brl(resumo?.previsto_semestral));
   setText("prevAnual", brl(resumo?.previsto_anual));
 
-  // gráficos
   const fatMes = await carregarFaturamentoPorMes(ano);
   renderBar(fatMes);
 
@@ -150,7 +148,7 @@ async function atualizarDashboard() {
   renderDonut(top);
 }
 
-// -------- INICIALIZACAO --------
+// -------- INICIALIZAÇÃO --------
 document.addEventListener("DOMContentLoaded", async () => {
   const ok = await requireAuth();
   if (!ok) {

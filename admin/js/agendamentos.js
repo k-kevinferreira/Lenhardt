@@ -20,7 +20,7 @@ function fmtBRL(v) {
 
 function normStatus(status) {
   const s = String(status || "").trim().toLowerCase();
-  return s ? s : "pendente";
+  return s || "pendente";
 }
 
 function badgeStatus(status) {
@@ -42,7 +42,7 @@ let cacheVeiculos = [];
 let reagendarId = null;
 let canDeleteAgendamento = false;
 
-// -------- VEICULOS AUXILIARES --------
+// -------- VEÍCULOS AUXILIARES --------
 async function carregarVeiculosParaSelect() {
   const select = document.getElementById("novoVeiculoId");
   if (!select) return;
@@ -100,14 +100,14 @@ function renderTabela(lista) {
     `;
 
     tr.innerHTML = `
-        <td>${escapeHtml(a.id)}</td>
-  <td>${textOrDash(a.nome)}</td>
-  <td>${textOrDash(a.telefone)}</td>
-  <td>${textOrDash(a.servico)}</td>
-  <td>${escapeHtml(fmtBRL(a.valor))}</td>
-  <td>${escapeHtml(fmtDataISOToBR(a.data))}</td>
-  <td>${textOrDash(a.observacoes)}</td>
-  <td>${badgeStatus(a.status)}</td>
+      <td>${escapeHtml(a.id)}</td>
+      <td>${textOrDash(a.nome)}</td>
+      <td>${textOrDash(a.telefone)}</td>
+      <td>${textOrDash(a.servico)}</td>
+      <td>${escapeHtml(fmtBRL(a.valor))}</td>
+      <td>${escapeHtml(fmtDataISOToBR(a.data))}</td>
+      <td>${textOrDash(a.observacoes)}</td>
+      <td>${badgeStatus(a.status)}</td>
       <td>
         <div class="acoes-inline">
           <select class="input acao-select" data-id="${escapeAttr(a.id)}" ${actionsDisabled ? "disabled" : ""}>
@@ -256,7 +256,7 @@ async function salvarNovoAgendamento() {
   await carregarAgendamentos();
 }
 
-// -------- MODAL NOVO VEICULO --------
+// -------- MODAL NOVO VEÍCULO --------
 function abrirModalNovoVeiculo() {
   const setVal = (id, v) => {
     const el = document.getElementById(id);
@@ -317,7 +317,7 @@ async function salvarNovoVeiculo() {
   fecharModalNovoVeiculo();
 }
 
-// -------- ACOES DA TABELA --------
+// -------- AÇÕES DA TABELA --------
 document.addEventListener("click", async (e) => {
   const btn = e.target.closest(".executar-acao");
   if (!btn) return;
@@ -368,7 +368,7 @@ document.addEventListener("click", async (e) => {
   }
 });
 
-// -------- INICIALIZACAO --------
+// -------- INICIALIZAÇÃO --------
 document.addEventListener("DOMContentLoaded", async () => {
   const ok = await requireAuth();
   if (!ok) return;

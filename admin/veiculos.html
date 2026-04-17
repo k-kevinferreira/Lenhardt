@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,8 +15,6 @@
 <body>
   <!---------- LAYOUT --------->
   <div class="layout">
-
-
     <!---------- SIDEBAR --------->
     <aside class="sidebar">
       <div class="brand">Lenhardt Detailing</div>
@@ -31,8 +30,7 @@
       <button id="btnLogout" class="btn-logout">Sair</button>
     </aside>
 
-
-    <!---------- CONTEUDO --------->
+    <!---------- CONTEÚDO --------->
     <main class="main">
       <!---------- TOPO --------->
       <header class="topbar">
@@ -48,7 +46,7 @@
       </header>
 
       <section class="role-notice" id="roleNotice" hidden>
-        Perfil operador: consulta e edicao continuam liberadas, mas exclusoes de fichas ficam disponiveis apenas para admin.
+        Perfil de operador: consulta e edição continuam liberadas, mas as exclusões de fichas ficam disponíveis apenas para admins.
       </section>
 
       <!---------- TABELA --------->
@@ -74,8 +72,7 @@
         </div>
       </section>
 
-
-      <!---------- MODAL VEICULO --------->
+      <!---------- MODAL VEÍCULO --------->
       <div class="modal-overlay" id="modalVeiculo">
         <div class="modal">
           <div class="modal-head">
@@ -102,7 +99,7 @@
             <input type="date" id="data_ultimo_servico" class="input" />
 
             <label class="label">Observação</label>
-            <input type="text" id="observacao" class="input" placeholder="Ex: atenção nos riscos" />
+            <input type="text" id="observacao" class="input" placeholder="Ex: atenção aos riscos" />
 
             <div class="modal-actions">
               <button class="btn btn-ghost" id="cancelarVeiculo">Cancelar</button>
@@ -111,11 +108,11 @@
           </div>
         </div>
       </div>
-
     </main>
   </div>
 
   <!---------- SCRIPT --------->
   <script type="module" src="./js/veiculos.js"></script>
 </body>
+
 </html>

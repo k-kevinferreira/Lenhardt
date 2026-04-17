@@ -50,7 +50,7 @@ function toast(icon, title, text) {
   });
 }
 
-// -------- INTERACOES DA PAGINA --------
+// -------- INTERAÇÕES DA PÁGINA --------
 document.addEventListener("DOMContentLoaded", () => {
   // -------- MENU MOBILE --------
   const menuIcon = document.getElementById("menu-icon");
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // -------- FORMULARIO DE AGENDAMENTO --------
+  // -------- FORMULÁRIO DE AGENDAMENTO --------
   const formAgendar = document.getElementById("form-agendar");
   if (formAgendar) {
     formAgendar.addEventListener("submit", async (e) => {
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // -------- FORMULARIO DE CONTATO --------
+  // -------- FORMULÁRIO DE CONTATO --------
   const formContato = document.getElementById("form-contato");
   if (formContato) {
     formContato.addEventListener("submit", async (e) => {

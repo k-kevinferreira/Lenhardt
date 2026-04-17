@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="api-base" content="/api" />
-  <title>Admin - Funcionarios</title>
+  <title>Admin - Funcionários</title>
 
   <!---------- ESTILOS --------->
   <link rel="stylesheet" href="./css/dashboard.css" />
@@ -21,20 +22,20 @@
       <nav class="menu">
         <a href="./dashboard.html">Dashboard</a>
         <a href="./agendamentos.html">Agendamentos</a>
-        <a href="./veiculos.html">Historico de Veiculos</a>
+        <a href="./veiculos.html">Histórico de Veículos</a>
         <a href="./estoque.html">Estoque</a>
-        <a class="active" href="./funcionarios.html">Funcionarios</a>
+        <a class="active" href="./funcionarios.html">Funcionários</a>
       </nav>
 
       <button id="btnLogout" class="btn-logout">Sair</button>
     </aside>
 
-    <!---------- CONTEUDO --------->
+    <!---------- CONTEÚDO --------->
     <main class="main">
       <!---------- TOPO --------->
       <header class="topbar">
         <div>
-          <h1>Funcionarios</h1>
+          <h1>Funcionários</h1>
           <p class="sub">Cadastre e gerencie a equipe de forma simples.</p>
         </div>
 
@@ -46,16 +47,16 @@
             <option value="inativo">Inativo</option>
           </select>
           <button id="btnAtualizar" class="btn">Atualizar</button>
-          <button id="btnNovoUsuario" class="btn btn-ghost">+ Novo Usuario</button>
-          <button id="btnNovoFuncionario" class="btn">+ Novo Funcionario</button>
+          <button id="btnNovoUsuario" class="btn btn-ghost">+ Novo Usuário</button>
+          <button id="btnNovoFuncionario" class="btn">+ Novo Funcionário</button>
         </div>
       </header>
 
       <section class="role-notice" id="roleNotice" hidden>
-        Perfil operador: voce pode manter a equipe, mas exclusoes e gestao de acessos ficam disponiveis apenas para admin.
+        Perfil de operador: você pode manter a equipe, mas as exclusões e a gestão de acessos ficam disponíveis apenas para admins.
       </section>
 
-      <!---------- TABELA FUNCIONARIOS --------->
+      <!---------- TABELA FUNCIONÁRIOS --------->
       <section class="panel">
         <div class="panel-title">Equipe</div>
         <div class="table-wrap">
@@ -68,8 +69,8 @@
                 <th>E-mail</th>
                 <th>Telefone</th>
                 <th>Status</th>
-                <th>Observacoes</th>
-                <th style="width: 220px;">Acoes</th>
+                <th>Observações</th>
+                <th style="width: 220px;">Ações</th>
               </tr>
             </thead>
             <tbody id="tbodyFuncionarios"></tbody>
@@ -77,9 +78,9 @@
         </div>
       </section>
 
-      <!---------- TABELA USUARIOS --------->
+      <!---------- TABELA USUÁRIOS --------->
       <section class="panel" id="usuariosPanel">
-        <div class="panel-title">Usuarios do Sistema</div>
+        <div class="panel-title">Usuários do Sistema</div>
         <div class="table-wrap">
           <table class="table">
             <thead>
@@ -89,7 +90,7 @@
                 <th>Perfil</th>
                 <th>Status</th>
                 <th>Criado em</th>
-                <th style="width: 420px;">Acoes</th>
+                <th style="width: 420px;">Ações</th>
               </tr>
             </thead>
             <tbody id="tbodyUsuarios"></tbody>
@@ -98,7 +99,7 @@
       </section>
 
       <section class="panel" id="solicitacoesPanel">
-        <div class="panel-title">Solicitacoes de Acesso</div>
+        <div class="panel-title">Solicitações de Acesso</div>
         <div class="table-wrap">
           <table class="table">
             <thead>
@@ -108,9 +109,9 @@
                 <th>E-mail</th>
                 <th>Telefone</th>
                 <th>Status</th>
-                <th>Observacoes</th>
+                <th>Observações</th>
                 <th>Solicitado em</th>
-                <th style="width: 260px;">Acoes</th>
+                <th style="width: 260px;">Ações</th>
               </tr>
             </thead>
             <tbody id="tbodySolicitacoesAcesso"></tbody>
@@ -118,11 +119,11 @@
         </div>
       </section>
 
-      <!---------- MODAL FUNCIONARIO --------->
+      <!---------- MODAL FUNCIONÁRIO --------->
       <div class="modal-overlay" id="modalFuncionario">
         <div class="modal">
           <div class="modal-head">
-            <h3 id="modalTitulo">Novo Funcionario</h3>
+            <h3 id="modalTitulo">Novo Funcionário</h3>
             <button class="modal-close" id="fecharModalFuncionario">&times;</button>
           </div>
 
@@ -133,7 +134,7 @@
             <input type="text" id="funcionarioNome" class="input" placeholder="Nome completo" />
 
             <label class="label">Cargo</label>
-            <input type="text" id="funcionarioCargo" class="input" placeholder="Ex: Lavador tecnico" />
+            <input type="text" id="funcionarioCargo" class="input" placeholder="Ex: Lavador técnico" />
 
             <label class="label">E-mail</label>
             <input type="email" id="funcionarioEmail" class="input" placeholder="email@exemplo.com" />
@@ -147,8 +148,8 @@
               <option value="inativo">Inativo</option>
             </select>
 
-            <label class="label">Observacoes</label>
-            <textarea id="funcionarioObservacoes" class="input textarea" placeholder="Informacoes uteis sobre o funcionario"></textarea>
+            <label class="label">Observações</label>
+            <textarea id="funcionarioObservacoes" class="input textarea" placeholder="Informações úteis sobre o funcionário"></textarea>
 
             <div class="modal-actions">
               <button class="btn btn-ghost" id="cancelarFuncionario">Cancelar</button>
@@ -158,11 +159,11 @@
         </div>
       </div>
 
-      <!---------- MODAL USUARIO --------->
+      <!---------- MODAL USUÁRIO --------->
       <div class="modal-overlay" id="modalUsuario">
         <div class="modal">
           <div class="modal-head">
-            <h3>Novo Usuario</h3>
+            <h3>Novo Usuário</h3>
             <button class="modal-close" id="fecharModalUsuario">&times;</button>
           </div>
 
@@ -171,7 +172,7 @@
             <input type="email" id="usuarioEmail" class="input" placeholder="email@empresa.com" />
 
             <label class="label">Senha</label>
-            <input type="password" id="usuarioSenha" class="input" placeholder="Minimo de 6 caracteres" />
+            <input type="password" id="usuarioSenha" class="input" placeholder="Mínimo de 6 caracteres" />
 
             <label class="label">Confirmar senha</label>
             <input type="password" id="usuarioSenhaConfirmacao" class="input" placeholder="Repita a senha" />
@@ -184,7 +185,7 @@
 
             <div class="modal-actions">
               <button class="btn btn-ghost" id="cancelarUsuario">Cancelar</button>
-              <button class="btn" id="salvarUsuario">Criar Usuario</button>
+              <button class="btn" id="salvarUsuario">Criar Usuário</button>
             </div>
           </div>
         </div>
@@ -202,14 +203,14 @@
             <input type="hidden" id="senhaUsuarioId" />
 
             <label class="label">Nova senha</label>
-            <input type="password" id="novaSenhaUsuario" class="input" placeholder="Minimo de 6 caracteres" />
+            <input type="password" id="novaSenhaUsuario" class="input" placeholder="Mínimo de 6 caracteres" />
 
             <label class="label">Confirmar nova senha</label>
             <input type="password" id="confirmacaoSenhaUsuario" class="input" placeholder="Repita a nova senha" />
 
             <div class="modal-actions">
               <button class="btn btn-ghost" id="cancelarSenhaUsuario">Cancelar</button>
-              <button class="btn" id="salvarSenhaUsuario">Salvar Senha</button>
+              <button class="btn" id="salvarSenhaUsuario">Salvar senha</button>
             </div>
           </div>
         </div>
@@ -220,4 +221,5 @@
   <!---------- SCRIPT --------->
   <script type="module" src="./js/funcionarios.js"></script>
 </body>
+
 </html>

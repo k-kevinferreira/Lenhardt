@@ -15,8 +15,6 @@
 <body>
   <!---------- LAYOUT --------->
   <div class="layout">
-
-
     <!---------- SIDEBAR --------->
     <aside class="sidebar">
       <div class="brand">Lenhardt Detailing</div>
@@ -32,8 +30,7 @@
       <button id="btnLogout" class="btn-logout">Sair</button>
     </aside>
 
-
-    <!---------- CONTEUDO --------->
+    <!---------- CONTEÚDO --------->
     <main class="main">
       <!---------- TOPO --------->
       <header class="topbar">
@@ -58,7 +55,7 @@
       </header>
 
       <section class="role-notice" id="roleNotice" hidden>
-        Perfil operador: voce pode trabalhar nos agendamentos, mas exclusoes ficam disponiveis apenas para admin.
+        Perfil de operador: você pode trabalhar nos agendamentos, mas as exclusões ficam disponíveis apenas para admins.
       </section>
 
       <!---------- TABELA --------->
@@ -75,9 +72,8 @@
                 <th>Serviço</th>
                 <th>Valor</th>
                 <th>Data</th>
-                <th>Obs</th>
+                <th>Obs.</th>
                 <th>Status</th>
-            
                 <th style="width: 320px;">Ações</th>
               </tr>
             </thead>
@@ -85,7 +81,6 @@
           </table>
         </div>
       </section>
-
 
       <!---------- MODAL REAGENDAR --------->
       <div class="modal-overlay" id="modalReagendar">
@@ -109,7 +104,6 @@
         </div>
       </div>
 
-
       <!---------- MODAL NOVO AGENDAMENTO --------->
       <div class="modal-overlay" id="modalNovoAgendamento">
         <div class="modal">
@@ -127,7 +121,6 @@
 
             <label class="label">Telefone</label>
             <input type="text" id="novoTelefone" class="input" placeholder="(61) 99999-9999" />
-
 
             <label class="label">Veículo</label>
             <div style="display:flex; gap:8px; align-items:center;">
@@ -158,8 +151,7 @@
         </div>
       </div>
 
-
-      <!---------- MODAL NOVO VEICULO --------->
+      <!---------- MODAL NOVO VEÍCULO --------->
       <div class="modal-overlay" id="modalNovoVeiculo">
         <div class="modal">
           <div class="modal-head">
@@ -184,10 +176,8 @@
           </div>
         </div>
       </div>
-
     </main>
   </div>
-
 
   <!---------- SCRIPT --------->
   <script type="module" src="./js/agendamentos.js"></script>

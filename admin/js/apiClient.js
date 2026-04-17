@@ -92,8 +92,8 @@ async function apiRefresh() {
       });
 
       const data = await parseResponse(res);
-      if (!res.ok) throw new Error(data?.message || "Sessao expirada");
-      if (!data.accessToken) throw new Error("Refresh invalido");
+      if (!res.ok) throw new Error(data?.message || "Sessão expirada.");
+      if (!data.accessToken) throw new Error("Refresh inválido.");
 
       setSession({
         token: data.accessToken,
@@ -188,8 +188,8 @@ export async function apiLogin(email, senha) {
   });
 
   const data = await parseResponse(res);
-  if (!res.ok) throw new Error(data?.message || "Erro no login");
-  if (!data.accessToken) throw new Error("Login nao retornou accessToken");
+  if (!res.ok) throw new Error(data?.message || "Erro no login.");
+  if (!data.accessToken) throw new Error("Login não retornou accessToken.");
 
   setSession({
     token: data.accessToken,
@@ -207,7 +207,7 @@ export async function apiPublicPost(path, body) {
   });
 
   const data = await parseResponse(res);
-  if (!res.ok) throw new Error(data?.message || "Erro na API");
+  if (!res.ok) throw new Error(data?.message || "Erro na API.");
   return data;
 }
 

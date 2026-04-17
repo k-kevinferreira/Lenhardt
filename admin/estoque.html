@@ -15,8 +15,6 @@
 <body>
   <!---------- LAYOUT --------->
   <div class="layout">
-
-
     <!---------- SIDEBAR --------->
     <aside class="sidebar">
       <div class="brand">Lenhardt Detailing</div>
@@ -32,8 +30,7 @@
       <button id="btnLogout" class="btn-logout">Sair</button>
     </aside>
 
-
-    <!---------- CONTEUDO --------->
+    <!---------- CONTEÚDO --------->
     <main class="main">
       <!---------- TOPO --------->
       <header class="topbar">
@@ -57,7 +54,7 @@
       </header>
 
       <section class="role-notice" id="roleNotice" hidden>
-        Perfil operador: cadastro e edicao seguem liberados, mas exclusoes de produtos ficam disponiveis apenas para admin.
+        Perfil de operador: cadastro e edição seguem liberados, mas as exclusões de produtos ficam disponíveis apenas para admins.
       </section>
 
       <!---------- TABELA --------->
@@ -82,7 +79,6 @@
         </div>
       </section>
 
-
       <!---------- MODAL PRODUTO --------->
       <div class="modal-overlay" id="modalProduto">
         <div class="modal">
@@ -106,14 +102,12 @@
             <label class="label">Valor gasto (R$)</label>
             <input type="number" id="produtoValorGasto" class="input" placeholder="0.00" step="0.01" />
 
-
             <label class="label">Status (automático)</label>
             <select id="produtoStatus" disabled>
               <option value="ok">ok</option>
               <option value="baixo">baixo</option>
               <option value="sem_estoque">sem estoque</option>
             </select>
-
 
             <div class="modal-actions">
               <button class="btn btn-ghost" id="cancelarModalProduto">Cancelar</button>
@@ -122,7 +116,6 @@
           </div>
         </div>
       </div>
-
     </main>
   </div>
 
