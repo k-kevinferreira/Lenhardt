@@ -6,7 +6,7 @@ Resumo das tabelas usadas pelo sistema.
 
 Finalidade:
 
-- usuarios com acesso ao painel admin
+- usuários com acesso ao painel admin
 
 Campos principais:
 
@@ -18,17 +18,17 @@ Campos principais:
 - `created_at`
 - `updated_at`
 
-Observacoes:
+Observações:
 
-- `email` e unico
-- `senha` e armazenada com hash `bcrypt`
+- `email` é único
+- `senha` é armazenada com hash `bcrypt`
 - `role` pode ser `admin` ou `operador`
 
 ## `refresh_tokens`
 
 Finalidade:
 
-- controle de refresh token por usuario
+- controle de refresh token por usuário
 
 Campos principais:
 
@@ -47,7 +47,7 @@ Relacionamento:
 
 Finalidade:
 
-- registrar acoes sensiveis de autenticacao e gestao de usuarios admin
+- registrar ações sensíveis de autenticação e gestão de usuários admin
 
 Campos principais:
 
@@ -67,7 +67,7 @@ Campos principais:
 
 Finalidade:
 
-- registrar pedidos publicos de acesso ao painel
+- registrar pedidos públicos de acesso ao painel
 
 Campos principais:
 
@@ -83,10 +83,10 @@ Campos principais:
 - `created_at`
 - `updated_at`
 
-Observacoes:
+Observações:
 
 - `status` pode ser `pendente`, `aprovado` ou `recusado`
-- quando aprovada, a solicitacao gera um usuario em `admins` com perfil `operador`
+- quando aprovada, a solicitação gera um usuário em `admins` com perfil `operador`
 
 Relacionamento:
 
@@ -110,15 +110,15 @@ Campos principais:
 - `created_at`
 - `updated_at`
 
-Observacao:
+Observação:
 
-- funcionario nao e o mesmo que usuario admin
+- funcionário não é o mesmo que usuário admin
 
 ## `veiculos`
 
 Finalidade:
 
-- ficha base dos veiculos dos clientes
+- ficha base dos veículos dos clientes
 
 Campos principais:
 
@@ -132,10 +132,10 @@ Campos principais:
 - `created_at`
 - `updated_at`
 
-Observacoes:
+Observações:
 
-- `placa` e unica
-- historico real vem dos agendamentos e pagamentos
+- `placa` é única
+- histórico real vem dos agendamentos e pagamentos
 
 ## `agendamentos`
 
@@ -166,7 +166,7 @@ Relacionamento:
 
 Finalidade:
 
-- registrar conclusao financeira dos agendamentos
+- registrar conclusão financeira dos agendamentos
 
 Campos principais:
 
@@ -215,7 +215,7 @@ Campos principais:
 - `mensagem`
 - `created_at`
 
-## Relacoes Principais
+## Relações Principais
 
 ```text
 admins 1---N refresh_tokens
@@ -225,10 +225,10 @@ veiculos 1---N agendamentos
 agendamentos 1---1 pagamentos
 ```
 
-## Regras de Negocio Relevantes
+## Regras de Negócio Relevantes
 
-- um agendamento concluido pode gerar pagamento
-- o veiculo pode existir sem historico inicial
-- desativar usuario admin invalida seus refresh tokens
-- excluir o ultimo usuario admin do sistema nao e permitido
-- solicitacoes publicas aprovadas criam usuario com perfil inicial `operador`
+- um agendamento concluído pode gerar pagamento
+- o veículo pode existir sem histórico inicial
+- desativar usuário admin invalida seus refresh tokens
+- excluir o último usuário admin do sistema não é permitido
+- solicitações públicas aprovadas criam usuário com perfil inicial `operador`

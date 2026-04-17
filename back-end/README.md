@@ -16,11 +16,11 @@ API REST do sistema Lenhardt Detailing.
 back-end/
 |-- migrations/
 |-- src/
-|   |-- config/         # conexao com banco
-|   |-- controllers/    # regras por modulo
-|   |-- middleware/     # autenticacao
-|   |-- routes/         # definicao das rotas
-|   `-- utils/          # validacoes e helpers
+|   |-- config/         # conexão com banco
+|   |-- controllers/    # regras por módulo
+|   |-- middleware/     # autenticação
+|   |-- routes/         # definição das rotas
+|   `-- utils/          # validações e helpers
 |-- package.json
 `-- .env
 ```
@@ -37,7 +37,7 @@ npm run migrate
 npm test
 ```
 
-## Variaveis de Ambiente
+## Variáveis de Ambiente
 
 Arquivo: `.env`
 
@@ -51,7 +51,7 @@ Campos principais:
 - `ACCESS_TOKEN_TTL`
 - `REFRESH_TOKEN_TTL`
 
-Opcional para conexao sem `DATABASE_URL`:
+Opcional para conexão sem `DATABASE_URL`:
 
 - `DB_HOST`
 - `DB_PORT`
@@ -60,12 +60,12 @@ Opcional para conexao sem `DATABASE_URL`:
 - `DB_NAME`
 - `DB_POOL_MAX`
 
-## Autenticacao
+## Autenticação
 
 ### Modelo
 
 - login gera `accessToken`
-- `refresh_token` e salvo em cookie `httpOnly`
+- `refresh_token` é salvo em cookie `httpOnly`
 - rotas protegidas exigem header `Authorization: Bearer <token>`
 - refresh rotaciona o token anterior
 
@@ -83,53 +83,53 @@ Leia e execute em ordem:
 
 - `migrations/README.md`
 
-## Modulos da API
+## Módulos da API
 
 ### Auth
 
 - login
 - refresh
 - logout
-- leitura do usuario autenticado
-- listagem e decisao de solicitacoes de acesso
-- listagem de usuarios admin
-- criacao de usuario admin
+- leitura do usuário autenticado
+- listagem e decisão de solicitações de acesso
+- listagem de usuários admin
+- criação de usuário admin
 - troca de senha
-- ativacao e desativacao
-- alteracao de perfil de acesso
-- exclusao
+- ativação e desativação
+- alteração de perfil de acesso
+- exclusão
 
-### Publico
+### Público
 
 - contato do site
-- solicitacao publica de agendamento
-- solicitacao publica de acesso
+- solicitação pública de agendamento
+- solicitação pública de acesso
 
 ### Admin
 
 - dashboard
 - agendamentos
-- veiculos
+- veículos
 - produtos
-- funcionarios
+- funcionários
 
-## Validacoes
+## Validações
 
-As validacoes basicas ficam em:
+As validações básicas ficam em:
 
 - `src/utils/validation.js`
 
-Hoje o backend ja valida:
+Hoje o backend já valida:
 
 - e-mail
 - telefone
 - placa
-- tamanho basico de strings
+- tamanho básico de strings
 - datas
 
-## Observacoes Operacionais
+## Observações Operacionais
 
-- apos alterar rotas ou controllers, reinicie o backend
-- se uma funcionalidade nova falhar apos deploy local, verifique primeiro se a migration correspondente foi aplicada
+- após alterar rotas ou controllers, reinicie o backend
+- se uma funcionalidade nova falhar após deploy local, verifique primeiro se a migration correspondente foi aplicada
 - se uma rota nova retornar `Cannot POST` ou `Cannot GET`, verifique se o processo Node ativo foi reiniciado
 - no Render Postgres, prefira usar `DATABASE_URL`

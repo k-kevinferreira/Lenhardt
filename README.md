@@ -1,40 +1,40 @@
 # Lenhardt Detailing
 
-Sistema web para operacao de uma estetica automotiva, com site publico e painel administrativo para agendamentos, veiculos, estoque, funcionarios, dashboard financeiro e gestao de usuarios admin.
+Sistema web para operação de uma estética automotiva, com site público e painel administrativo para agendamentos, veículos, estoque, funcionários, dashboard financeiro e gestão de usuários admin.
 
-## Visao Geral
+## Visão Geral
 
-O projeto e dividido em:
+O projeto é dividido em:
 
-- frontend publico estatico na raiz do projeto e em `src/`
-- painel admin estatico em `admin/`
+- frontend público estático na raiz do projeto e em `src/`
+- painel admin estático em `admin/`
 - API Node.js/Express em `back-end/`
-- banco PostgreSQL para persistencia operacional
+- banco PostgreSQL para persistência operacional
 
 ## Principais Funcionalidades
 
-- site institucional com formulario publico de contato
-- solicitacao publica de agendamento
-- solicitacao publica de acesso para operador, com aprovacao administrativa
+- site institucional com formulário público de contato
+- solicitação pública de agendamento
+- solicitação pública de acesso para operador, com aprovação administrativa
 - login administrativo com JWT + refresh token
 - perfis de acesso `admin` e `operador`
-- exclusoes operacionais restritas a `admin`
+- exclusões operacionais restritas a `admin`
 - dashboard com resumo financeiro
-- gestao de agendamentos
-- gestao de veiculos
-- gestao de estoque
-- gestao de funcionarios
-- gestao de usuarios admin pelo painel
+- gestão de agendamentos
+- gestão de veículos
+- gestão de estoque
+- gestão de funcionários
+- gestão de usuários admin pelo painel
 
 ## Tecnologias
 
 - frontend: HTML, CSS e JavaScript puro
 - backend: Node.js, Express
 - banco: PostgreSQL
-- autenticacao: JWT + cookie `httpOnly` para refresh token
-- seguranca: `helmet`, `cors`, `express-rate-limit`, `bcryptjs`
-- auditoria minima para login e gestao de usuarios admin
-- testes minimos com `node:test`
+- autenticação: JWT + cookie `httpOnly` para refresh token
+- segurança: `helmet`, `cors`, `express-rate-limit`, `bcryptjs`
+- auditoria mínima para login e gestão de usuários admin
+- testes mínimos com `node:test`
 
 ## Estrutura do Projeto
 
@@ -53,27 +53,27 @@ O projeto e dividido em:
 |   |   |-- routes/
 |   |   `-- utils/
 |   `-- package.json
-|-- docs/                 # Documentacao funcional e tecnica
-|-- src/                  # Assets e scripts do site publico
-`-- index.html            # Site publico
+|-- docs/                 # Documentação funcional e técnica
+|-- src/                  # Assets e scripts do site público
+`-- index.html            # Site público
 ```
 
 ## Requisitos
 
 - Node.js 18+
-- PostgreSQL 14+ ou compativel
-- um servidor estatico para o frontend, como Live Server
+- PostgreSQL 14+ ou compatível
+- um servidor estático para o frontend, como Live Server
 
-## Configuracao do Ambiente
+## Configuração do Ambiente
 
-### 1. Instalar dependencias do backend
+### 1. Instalar dependências do backend
 
 ```powershell
 cd back-end
 npm install
 ```
 
-### 2. Configurar variaveis de ambiente
+### 2. Configurar variáveis de ambiente
 
 Arquivo: `back-end/.env`
 
@@ -119,7 +119,7 @@ cd back-end
 npm start
 ```
 
-### 4.1. Rodar testes minimos do backend
+### 4.1. Rodar testes mínimos do backend
 
 ```powershell
 cd back-end
@@ -128,46 +128,46 @@ npm test
 
 ### 5. Subir o frontend
 
-Abra a raiz do projeto com um servidor estatico.
+Abra a raiz do projeto com um servidor estático.
 
 Exemplo comum:
 
-- site publico em `http://127.0.0.1:5500/index.html`
+- site público em `http://127.0.0.1:5500/index.html`
 - admin em `http://127.0.0.1:5500/admin/login.html`
 
 ## Deploy
 
 ### Vercel
 
-- o frontend estatico pode ser publicado na Vercel sem build
+- o frontend estático pode ser publicado na Vercel sem build
 - as telas usam `meta[name="api-base"]` e saem com `content="/api"`
-- se o backend ficar em outro dominio, troque esse valor nas paginas HTML para a URL publica da API
+- se o backend ficar em outro domínio, troque esse valor nas páginas HTML para a URL pública da API
 
 ### Render
 
-- o backend Node/Express esta compativel com Render
-- a recomendacao e usar `Render Web Service` para a API e `Render Postgres` para o banco
+- o backend Node/Express está compatível com Render
+- a recomendação é usar `Render Web Service` para a API e `Render Postgres` para o banco
 - defina no Render: `NODE_ENV=production`, `PORT`, `DATABASE_URL`, `ACCESS_TOKEN_SECRET`, `REFRESH_TOKEN_SECRET` e `CORS_ORIGINS`
-- em `CORS_ORIGINS`, informe os dominios exatos do frontend publicado, por exemplo `https://seu-projeto.vercel.app`
-- o endpoint de saude disponivel para monitoramento e `/health`
+- em `CORS_ORIGINS`, informe os domínios exatos do frontend publicado, por exemplo `https://seu-projeto.vercel.app`
+- o endpoint de saúde disponível para monitoramento é `/health`
 
 ### Supabase
 
 - como o backend agora usa PostgreSQL, Supabase pode ser usado apenas como banco
-- mesmo assim, a recomendacao operacional deste projeto continua sendo `Vercel + Render + Render Postgres`
+- mesmo assim, a recomendação operacional deste projeto continua sendo `Vercel + Render + Render Postgres`
 
 ## Login Admin
 
-O sistema nao possui cadastro publico de administrador.
+O sistema não possui cadastro público de administrador.
 
-Existe, porem, solicitacao publica de acesso pela tela `admin/login.html`.
-Esse fluxo gera uma solicitacao pendente e, quando aprovada por um admin,
-cria um usuario com perfil `operador`.
+Existe, porém, solicitação pública de acesso pela tela `admin/login.html`.
+Esse fluxo gera uma solicitação pendente e, quando aprovada por um admin,
+cria um usuário com perfil `operador`.
 
-Voce pode:
+Você pode:
 
-- criar via tela `Funcionarios > + Novo Usuario`, se ja estiver logado
-- aprovar solicitacoes pendentes na tela `Funcionarios`, se for `admin`
+- criar via tela `Funcionários > + Novo Usuário`, se já estiver logado
+- aprovar solicitações pendentes na tela `Funcionários`, se for `admin`
 - criar via script do backend:
 
 ```powershell
@@ -175,12 +175,12 @@ cd back-end
 npm run create-admin -- email@empresa.com senha123
 ```
 
-## Manutencao
+## Manutenção
 
-Quando houver mudanca estrutural:
+Quando houver mudança estrutural:
 
-1. atualizar migrations, se houver mudanca de banco
+1. atualizar migrations, se houver mudança de banco
 2. atualizar `docs/schema.md`
 3. atualizar `docs/api.md`, se houver rota nova
-4. atualizar `docs/fluxos.md`, se houver mudanca de operacao
+4. atualizar `docs/fluxos.md`, se houver mudança de operação
 5. reiniciar o backend local

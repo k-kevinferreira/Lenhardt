@@ -1,6 +1,6 @@
 # Migrations
 
-Execute os arquivos SQL em ordem numerica no PostgreSQL da aplicacao.
+Execute os arquivos SQL em ordem numérica no PostgreSQL da aplicação.
 
 Ordem recomendada:
 
@@ -18,13 +18,13 @@ Ordem recomendada:
 12. `012_alter_admins_add_role.sql`
 13. `013_create_audit_logs.sql`
 
-Observacoes:
+Observações:
 
 - `agendamentos` depende de `veiculos`
 - `pagamentos` depende de `agendamentos`
 - `refresh_tokens` depende de `admins`
-- a `001_create_admins.sql` cria tambem a funcao compartilhada `set_updated_at()`
-- apos aplicar as migrations, o backend nao depende mais de criacao implicita de tabela no controller
-- em banco ja existente, execute tambem a `009_alter_veiculos_make_history_optional.sql`
-- para gerir usuarios admin pelo painel, execute tambem a `010_alter_admins_add_ativo.sql`
-- para permissoes por perfil e auditoria, execute tambem `012_alter_admins_add_role.sql` e `013_create_audit_logs.sql`
+- a `001_create_admins.sql` cria também a função compartilhada `set_updated_at()`
+- após aplicar as migrations, o backend não depende mais de criação implícita de tabela no controller
+- em banco já existente, execute também a `009_alter_veiculos_make_history_optional.sql`
+- para gerir usuários admin pelo painel, execute também a `010_alter_admins_add_ativo.sql`
+- para permissões por perfil e auditoria, execute também `012_alter_admins_add_role.sql` e `013_create_audit_logs.sql`

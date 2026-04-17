@@ -4,13 +4,13 @@ Resumo das rotas principais do sistema.
 
 ## Base URL
 
-Ambiente local padrao:
+Ambiente local padrão:
 
 ```text
 http://127.0.0.1:3000/api
 ```
 
-## Autenticacao
+## Autenticação
 
 Rotas protegidas exigem:
 
@@ -22,7 +22,7 @@ Authorization: Bearer <accessToken>
 
 ### POST `/api/auth/login`
 
-Autenticacao: publica
+Autenticação: pública
 
 Body:
 
@@ -33,44 +33,44 @@ Resposta:
 
 - `accessToken`
 - `user`
-  - `id`
-  - `email`
-  - `role`
+- `id`
+- `email`
+- `role`
 
 ### POST `/api/auth/refresh`
 
-Autenticacao: cookie `refresh_token`
+Autenticação: cookie `refresh_token`
 
 Resposta:
 
 - `accessToken`
 - `user`
-  - `id`
-  - `email`
-  - `role`
+- `id`
+- `email`
+- `role`
 
 ### POST `/api/auth/logout`
 
-Autenticacao: opcional com cookie, invalida refresh atual
+Autenticação: opcional com cookie; invalida o refresh atual
 
 ### GET `/api/auth/me`
 
-Autenticacao: protegida
+Autenticação: protegida
 
 Resposta:
 
 - `user`
-  - `id`
-  - `email`
-  - `role`
+- `id`
+- `email`
+- `role`
 
 ### GET `/api/auth/admins`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Resposta:
 
-- lista de usuarios admin
+- lista de usuários admin
 
 Campos:
 
@@ -82,7 +82,7 @@ Campos:
 
 ### POST `/api/auth/admins`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Body:
 
@@ -92,7 +92,7 @@ Body:
 
 ### PUT `/api/auth/admins/:id/password`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Body:
 
@@ -100,7 +100,7 @@ Body:
 
 ### PATCH `/api/auth/admins/:id/status`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Body:
 
@@ -108,7 +108,7 @@ Body:
 
 ### PATCH `/api/auth/admins/:id/role`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Body:
 
@@ -116,15 +116,15 @@ Body:
 
 ### DELETE `/api/auth/admins/:id`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 ### GET `/api/auth/access-requests`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Resposta:
 
-- lista de solicitacoes de acesso pendentes
+- lista de solicitações de acesso pendentes
 
 Campos:
 
@@ -138,7 +138,7 @@ Campos:
 
 ### PATCH `/api/auth/access-requests/:id/approve`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Resposta:
 
@@ -146,17 +146,17 @@ Resposta:
 
 ### PATCH `/api/auth/access-requests/:id/reject`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 Resposta:
 
 - `message`
 
-## Publico
+## Público
 
 ### POST `/api/public/agendamentos`
 
-Autenticacao: publica
+Autenticação: pública
 
 Body:
 
@@ -176,7 +176,7 @@ Resposta:
 
 ### POST `/api/public/contatos`
 
-Autenticacao: publica
+Autenticação: pública
 
 Body:
 
@@ -191,7 +191,7 @@ Resposta:
 
 ### POST `/api/public/solicitacoes-acesso`
 
-Autenticacao: publica
+Autenticação: pública
 
 Body:
 
@@ -206,15 +206,15 @@ Resposta:
 - `message`
 - `id`
 
-## Funcionarios
+## Funcionários
 
 ### GET `/api/funcionarios`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### POST `/api/funcionarios`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -227,23 +227,23 @@ Body:
 
 ### PUT `/api/funcionarios/:id`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
-Mesmo body de criacao.
+Mesmo body de criação.
 
 ### DELETE `/api/funcionarios/:id`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
-## Veiculos
+## Veículos
 
 ### GET `/api/veiculos`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### POST `/api/veiculos`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -256,17 +256,17 @@ Body:
 
 ### PUT `/api/veiculos/:id`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
-Mesmo body de criacao.
+Mesmo body de criação.
 
 ### DELETE `/api/veiculos/:id`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 ### GET `/api/veiculos/:id/historico`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Resposta:
 
@@ -278,11 +278,11 @@ Resposta:
 
 ### GET `/api/produtos`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### POST `/api/produtos`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -293,21 +293,21 @@ Body:
 
 ### PUT `/api/produtos/:id`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### DELETE `/api/produtos/:id`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 ## Agendamentos
 
 ### GET `/api/agendamentos`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### POST `/api/agendamentos`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -322,7 +322,7 @@ Body:
 
 ### PUT `/api/agendamentos/:id`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -337,19 +337,19 @@ Body:
 
 ### DELETE `/api/agendamentos/:id`
 
-Autenticacao: protegida (`admin`)
+Autenticação: protegida (`admin`)
 
 ### PATCH `/api/agendamentos/:id/confirmar`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### PATCH `/api/agendamentos/:id/cancelar`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### PATCH `/api/agendamentos/:id/reagendar`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -357,7 +357,7 @@ Body:
 
 ### PATCH `/api/agendamentos/:id/concluir`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 Body:
 
@@ -369,21 +369,21 @@ Body:
 
 ### GET `/api/dashboard/resumo?ano=YYYY&mes=M`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### GET `/api/dashboard/faturamento-mes?ano=YYYY`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ### GET `/api/dashboard/servicos-top?ano=YYYY&mes=M`
 
-Autenticacao: protegida (`admin` ou `operador`)
+Autenticação: protegida (`admin` ou `operador`)
 
 ## Erros Comuns
 
-- `400` entrada invalida
-- `401` nao autenticado ou sessao expirada
-- `403` sem permissao para a acao, usuario desativado ou origem bloqueada
-- `404` recurso nao encontrado
-- `409` conflito de negocio
+- `400` entrada inválida
+- `401` não autenticado ou sessão expirada
+- `403` sem permissão para a ação, usuário desativado ou origem bloqueada
+- `404` recurso não encontrado
+- `409` conflito de negócio
 - `500` erro interno
