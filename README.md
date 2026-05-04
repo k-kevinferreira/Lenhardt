@@ -184,3 +184,9 @@ Quando houver mudança estrutural:
 3. atualizar `docs/api.md`, se houver rota nova
 4. atualizar `docs/fluxos.md`, se houver mudança de operação
 5. reiniciar o backend local
+
+## Padroes Tecnicos
+
+As diretrizes de arquitetura, seguranca, refatoracao gradual, testes, banco de dados, autenticacao e evolucao futura da stack estao documentadas em:
+
+- `docs/padroes-tecnicos.md`
