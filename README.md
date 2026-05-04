@@ -190,3 +190,4 @@ Quando houver mudança estrutural:
 As diretrizes de arquitetura, seguranca, refatoracao gradual, testes, banco de dados, autenticacao e evolucao futura da stack estao documentadas em:
 
 - `docs/padroes-tecnicos.md`
+- `codex-guia.md`
