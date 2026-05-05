@@ -91,6 +91,8 @@ Pontos positivos atuais:
 - queries parametrizadas;
 - uso de `helmet`;
 - rate limit em login e formularios publicos;
+- validacao de variaveis obrigatorias no boot;
+- CORS restrito em producao;
 - refresh token em cookie `httpOnly`;
 - refresh token hasheado no banco;
 - rotacao de refresh token;
@@ -106,8 +108,7 @@ Principais riscos atuais:
 - controllers concentram regra de negocio, SQL, validacao e resposta HTTP;
 - access token pode ser persistido em `sessionStorage`;
 - solicitacao publica de acesso coleta senha antes da aprovacao;
-- CORS pode ficar aberto se `CORS_ORIGINS` estiver vazio;
-- variaveis obrigatorias de seguranca nao sao validadas no boot;
+- ampliar validacao de configuracao conforme novas variaveis criticas surgirem;
 - migrations nao possuem tabela de controle de execucao;
 - regras de status de agendamento ainda nao estao centralizadas;
 - audit log ainda nao cobre todos os fluxos criticos;
@@ -120,8 +121,8 @@ Principais riscos atuais:
 
 Prioridade:
 
-- validar env vars obrigatorias no boot;
-- impedir CORS aberto em producao;
+- manter e evoluir a validacao de env vars obrigatorias no boot;
+- manter CORS restrito em producao;
 - revisar persistencia do access token no frontend;
 - remover senha do fluxo publico de solicitacao de acesso;
 - criar fluxo futuro de convite ou definicao segura de senha;
@@ -213,14 +214,13 @@ Migrar para Next.js, NestJS e Prisma somente depois de:
 
 Ordem sugerida para os proximos commits:
 
-1. `fix(security): validate required environment variables on startup`
-2. `fix(security): restrict production CORS configuration`
-3. `test(auth): add coverage for login and refresh token flow`
-4. `test(appointments): cover appointment completion payment flow`
-5. `refactor(auth): extract authentication service and repository`
-6. `refactor(appointments): centralize appointment status transitions`
-7. `feat(db): add schema migrations tracking`
-8. `feat(auth): replace public password collection with invite flow`
+1. Concluido: `fix(security): validate environment and restrict production CORS`
+2. `test(auth): add coverage for login and refresh token flow`
+3. `test(appointments): cover appointment completion payment flow`
+4. `refactor(auth): extract authentication service and repository`
+5. `refactor(appointments): centralize appointment status transitions`
+6. `feat(db): add schema migrations tracking`
+7. `feat(auth): replace public password collection with invite flow`
 
 ## Regra De Trabalho Para O Codex
 

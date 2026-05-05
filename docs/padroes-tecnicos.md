@@ -86,6 +86,7 @@ Seguranca:
 - `cors`;
 - `express-rate-limit`;
 - `cookie-parser`;
+- validacao de variaveis obrigatorias em `back-end/src/config/env.js`;
 - controle de roles `admin` e `operador`;
 - protecao de rotas sensiveis;
 - bloqueio de acoes destrutivas para operador.
@@ -152,6 +153,7 @@ O objetivo nao e apenas fazer funcionar. O objetivo e construir e evoluir um sis
 - nao misturar SQL diretamente em controllers quando for possivel refatorar com seguranca;
 - nao expor segredos no codigo;
 - usar variaveis de ambiente para dados sensiveis;
+- validar variaveis obrigatorias no boot;
 - validar entradas no backend;
 - validar formularios no frontend quando aplicavel;
 - proteger rotas administrativas;
@@ -330,6 +332,7 @@ Pontos de atencao do projeto atual:
 - preferir fluxo de convite para definicao de senha;
 - nao deixar `CORS_ORIGINS` aberto em producao;
 - validar `JWT_SECRET`, `ACCESS_TOKEN_SECRET`, `REFRESH_TOKEN_SECRET` e demais variaveis obrigatorias;
+- manter `back-end/src/config/env.js` atualizado quando novas variaveis criticas forem adicionadas;
 - revisar uso de CDN e politica CSP;
 - ampliar audit log para acoes criticas.
 

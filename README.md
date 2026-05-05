@@ -91,6 +91,12 @@ ACCESS_TOKEN_TTL=15m
 REFRESH_TOKEN_TTL=30d
 ```
 
+Observacoes importantes:
+
+- em producao, `CORS_ORIGINS` e obrigatorio
+- em producao, `ACCESS_TOKEN_SECRET` e `REFRESH_TOKEN_SECRET` devem ser longos, aleatorios e diferentes dos exemplos
+- o backend valida a configuracao no boot e falha cedo se variaveis criticas estiverem ausentes ou inseguras
+
 Opcional sem `DATABASE_URL`:
 
 ```env
@@ -149,6 +155,8 @@ Exemplo comum:
 - a recomendação é usar `Render Web Service` para a API e `Render Postgres` para o banco
 - defina no Render: `NODE_ENV=production`, `PORT`, `DATABASE_URL`, `ACCESS_TOKEN_SECRET`, `REFRESH_TOKEN_SECRET` e `CORS_ORIGINS`
 - em `CORS_ORIGINS`, informe os domínios exatos do frontend publicado, por exemplo `https://seu-projeto.vercel.app`
+- se `CORS_ORIGINS` estiver vazio em producao, a API nao deve iniciar
+- use secrets fortes em producao; valores curtos ou de exemplo devem ser rejeitados no boot
 - o endpoint de saúde disponível para monitoramento é `/health`
 
 ### Supabase

@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const { rateLimit } = require("express-rate-limit");
 require("dotenv").config();
+const { validateAppEnv } = require("./config/env");
 
 const authRoutes = require("./routes/auth.routes");
 const publicRoutes = require("./routes/public.routes");
@@ -13,6 +14,8 @@ const produtosRoutes = require("./routes/produtos.routes");
 const agendamentosRoutes = require("./routes/agendamentos.routes");
 const veiculosRoutes = require("./routes/veiculos.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
+
+const envConfig = validateAppEnv();
 
 // -------- APP --------
 const app = express();
@@ -42,18 +45,15 @@ app.use(helmet());
 app.use(cookieParser());
 app.use(express.json({ limit: "100kb" }));
 
-const allowedOrigins = (process.env.CORS_ORIGINS || "")
-  .split(",")
-  .map((s) => s.trim())
-  .filter(Boolean);
+const allowedOrigins = envConfig.allowedOrigins;
 
 app.use(
   cors({
     origin: (origin, cb) => {
       if (!origin) return cb(null, true);
-      if (allowedOrigins.length === 0) return cb(null, true);
+      if (!envConfig.isProd && allowedOrigins.length === 0) return cb(null, true);
       if (allowedOrigins.includes(origin)) return cb(null, true);
-      return cb(null, false);
+      return cb(new Error("CORS bloqueado para esta origem"));
     },
     credentials: true,
   })

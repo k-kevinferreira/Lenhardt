@@ -51,6 +51,15 @@ Campos principais:
 - `ACCESS_TOKEN_TTL`
 - `REFRESH_TOKEN_TTL`
 
+Validacao no boot:
+
+- o backend valida variaveis obrigatorias ao iniciar
+- `DATABASE_URL` ou `DB_HOST`/`DB_USER`/`DB_NAME` deve estar configurado
+- `ACCESS_TOKEN_SECRET` e `REFRESH_TOKEN_SECRET` sao obrigatorios
+- em producao, `CORS_ORIGINS` e obrigatorio
+- em producao, secrets curtos ou com valores de exemplo sao rejeitados
+- a validacao fica em `src/config/env.js`
+
 Opcional para conexão sem `DATABASE_URL`:
 
 - `DB_HOST`
@@ -133,3 +142,4 @@ Hoje o backend já valida:
 - se uma funcionalidade nova falhar após deploy local, verifique primeiro se a migration correspondente foi aplicada
 - se uma rota nova retornar `Cannot POST` ou `Cannot GET`, verifique se o processo Node ativo foi reiniciado
 - no Render Postgres, prefira usar `DATABASE_URL`
+- se a API falhar no boot com "Configuracao invalida", revise `.env`, secrets e `CORS_ORIGINS`
